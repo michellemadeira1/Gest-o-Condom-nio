@@ -10,5 +10,5 @@ import com.condominios.gestao.de.encomendas.model.Notificacao;
 @Repository
 public interface NotificacaoRepository extends JpaRepository<Notificacao, Long> {
     List<Notificacao> findByStatusEnvio(Boolean statusEnvio);
-    List<Notificacao> findAllByNomeMoradorContainingIgnoreCase(String nome);
+    List<Notificacao> findByEncomenda_Morador_NomeContainingIgnoreCase(String nomeMorador);
 }

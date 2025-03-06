@@ -19,7 +19,7 @@ public class NotificacaoService {
 	 
 	// Listar notificações por nome de morador
 	 public ResponseEntity<List<Notificacao>> listarNotificacoesPorNome(String nome) {
-	        List<Notificacao> notificacoes = notificacaoRepository.findAllByNomeMoradorContainingIgnoreCase(nome);
+	        List<Notificacao> notificacoes = notificacaoRepository.findByEncomenda_Morador_NomeContainingIgnoreCase(nome);
 
 	        if (notificacoes.isEmpty()) {
 	            return ResponseEntity.noContent().build();
@@ -61,9 +61,9 @@ public class NotificacaoService {
 	        Optional<Notificacao> notificacaoExistente = notificacaoRepository.findById(id);
 	        if (notificacaoExistente.isPresent()) {
 	        Notificacao notificacao = notificacaoExistente.get();
-	        notificacao.setMenssagem(notificacaoAtualizada.getMenssagem());
 	        notificacao.setStatusEnvio(notificacaoAtualizada.getStatusEnvio());
 	        notificacao.setDataEnvio(notificacaoAtualizada.getDataEnvio());
+	        notificacao.setMenssagem(notificacaoAtualizada.getMenssagem());
 	        Notificacao notificacaoAtualizadaSalva = notificacaoRepository.save(notificacao);
 	        return ResponseEntity.ok(notificacaoAtualizadaSalva);
 	        }else {

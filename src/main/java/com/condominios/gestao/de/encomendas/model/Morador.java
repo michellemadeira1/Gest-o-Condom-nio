@@ -13,34 +13,31 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Morador {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull
-    private String nome;
+	@NotNull
+	private String nome;
 
-    @NotNull
-    private String apartamento;
+	@NotNull
+	private String apartamento;
 
-    @NotNull
-    private String telefone; 
+	@NotNull
+	private String telefone;
 
-    
-    
-    @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Encomenda> encomendas = new ArrayList<>();
-    
-    
-    public Morador() {}
+	@OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Encomenda> encomendas = new ArrayList<>();
 
-	public Morador(Long id, @NotNull String nome, @NotNull String apartamento, @NotNull String telefone, String email) {
-		super();
+	public Morador() {
+	}
+
+	public Morador(Long id, @NotNull String nome, @NotNull String apartamento, @NotNull String telefone) {
 		this.id = id;
 		this.nome = nome;
 		this.apartamento = apartamento;
 		this.telefone = telefone;
-		
+
 	}
 
 	public Long getId() {
@@ -74,9 +71,4 @@ public class Morador {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-	
-    
-    
-    
 }

@@ -2,12 +2,14 @@ package com.condominios.gestao.de.encomendas.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+@Entity
 public class Notificacao {
 
 	@Id
@@ -15,7 +17,7 @@ public class Notificacao {
 	private Long id;
 	private LocalDateTime dataEnvio;
 	private Boolean statusEnvio;
-	private String menssagem;
+	private String mensagem;
 	
 	
 	@ManyToOne
@@ -29,7 +31,7 @@ public class Notificacao {
 		this.id = id;
 		this.dataEnvio = dataEnvio;
 		this.statusEnvio = statusEnvio;
-		this.menssagem = menssagem;
+		this.mensagem = menssagem;
 	}
 
 	public Long getId() {
@@ -57,11 +59,11 @@ public class Notificacao {
 	}
 
 	public String getMenssagem() {
-		return menssagem;
+		return mensagem;
 	}
 
 	public void setMenssagem(String menssagem) {
-		this.menssagem = menssagem;
+		this.mensagem = menssagem;
 	}
 	
 	
